@@ -33,6 +33,7 @@ class Controller extends GetxController {
     for (int i = cityList.length - 1; i < cityList.length; i++) {
       if (await GetData().getForecastData(cityList[i]) == null) {
       } else {
+        box.write('citylist', cityList);
         cityList = box.read('citylist');
 
         pageList.add(await GetData().getForecastData(cityList[i]));
@@ -43,12 +44,12 @@ class Controller extends GetxController {
   List<Map<String, dynamic>> infoModelToList(InformationModel info) {
     List<Map<String, dynamic>> infoList = [];
     infoList = [
-      {'Açıklama': info.weather},
-      {'Minimum Sıcaklık': info.minTemp},
-      {'Maksimum Sıcaklık': info.maxTemp},
-      {'Basınç': info.pressure},
-      {'Nem': info.hummidity},
-      {'Rüzgar Hızı': info.windSpeed},
+      {'Description': info.weather},
+      {'Minimum Temp': info.minTemp},
+      {'Maximum Temp': info.maxTemp},
+      {'Pressure': info.pressure},
+      {'Hummidity': info.hummidity},
+      {'Wind Speed': info.windSpeed},
     ];
 
     return infoList;

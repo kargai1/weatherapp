@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weatherapp/base/consts.dart';
 import 'package:weatherapp/base/service.dart';
-import 'package:weatherapp/widgets/hourly_weather_cards.dart';
 
 import '../controller/controller.dart';
-import '../model/model.dart';
 
 class DrawerBar extends StatefulWidget {
   const DrawerBar({super.key, required this.pageList});
@@ -70,15 +68,15 @@ class _DrawerBarState extends Const<DrawerBar> {
               controller: cityController,
               decoration: InputDecoration(
                   fillColor: theme.canvasColor,
-                  hintText: 'Yeni Şehir Ekle',
+                  hintText: 'Add New City',
                   prefixIcon: IconButton(
                     icon: Icon(Icons.add),
                     onPressed: () async {
                       var x =
                           await GetData().getForecastData(cityController.text);
                       if (x == null) {
-                        Get.snackbar('HATA!!!',
-                            'Girdiğiniz Şehire Ait Bilgilere Ulaşılamıyor.',
+                        Get.snackbar('Something Went Wrong!',
+                            'There is no information about the city.',
                             backgroundColor: theme.canvasColor);
                       } else {
                         _controller.addNewCity(cityController.text);
