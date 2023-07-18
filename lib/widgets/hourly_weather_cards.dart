@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:weatherapp/base/consts.dart';
 import 'package:weatherapp/model/model.dart';
-
-import '../controller/controller.dart';
 
 class HourlyCards extends StatefulWidget {
   const HourlyCards({super.key, required this.hourlyWeather});
@@ -24,7 +21,7 @@ class _HourlyCardsState extends Const<HourlyCards> {
           itemCount: 8,
           itemBuilder: (context, index) {
             return Padding(
-              padding: EdgeInsets.only(top: 4, left: 20, right: 20),
+              padding: const EdgeInsets.only(top: 4, left: 20, right: 20),
               child: Card(
                 child: ListTile(
                   leading: Image.network(
